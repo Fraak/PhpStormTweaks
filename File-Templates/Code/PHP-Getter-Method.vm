@@ -1,0 +1,22 @@
+#**
+    This is a Velocity Template for PHPStorm to generate Getter Methods.
+    
+    @author Potherca
+*#
+
+#parse("macro.buildMethodName.vm")
+#buildMethodName( $NAME )
+
+/**
+ * @return ${TYPE_HINT}
+ */
+${STATIC} public function get${sMethodName}()
+{
+#if (${STATIC} == "static")
+    return self::$${FIELD_NAME};
+#else
+    return $this->${FIELD_NAME};
+#end
+}
+
+## EOF

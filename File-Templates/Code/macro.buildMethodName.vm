@@ -1,0 +1,16 @@
+#**
+    This PhpStorm Velocity Macro generates the non-get or set part for 
+    Getter and Setter Methods.
+    
+    It takes both 'simple' and my derived form of Systems Hungarian notation 
+    into account (for detail see: http://dl.dropbox.com/u/10170121/www/hungarian_apps.html)
+
+    @author Potherca
+*#
+#macro( buildMethodName  $p_sName )
+    #if($p_sName.startsWith('m_'))
+        #set( $sMethodName = $p_sName.substring(2))
+    #else
+        #set( $sMethodName = $p_sName )
+    #end
+#end

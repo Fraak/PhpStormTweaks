@@ -1,0 +1,36 @@
+#**
+    This PhpStorm Velocity Macro generates type hinting for non-scalar and 
+    type-casting variables for scalar types to be used with Getter and Setter Methods.
+    
+    For casting info see : http://nl.php.net/manual/en/language.types.type-juggling.php#language.types.typecasting
+
+    Please not that 'array' can be used as type hint since PHP 5.1 and 'callable' since PHP 5.4
+
+    @author Potherca
+*#
+
+#macro( buildTypeHinting  $p_sCastHint )
+    #set ($sCastingHint = '')
+    #set ($sTypeHint = '')
+    #if($p_sCastHint != 'bool' &&  $p_sCastHint != 'boolean' 
+        &&  $p_sCastHint != 'int' &&  $p_sCastHint != 'integer'  
+        &&  $p_sCastHint != 'float' &&  $p_sCastHint != 'double'  &&  $p_sCastHint != 'real' 
+        &&  $p_sCastHint != 'str' &&  $p_sCastHint != 'string'  
+        &&  $p_sCastHint != 'numeric' &&  $p_sCastHint != 'callable' &&  $p_sCastHint != 'resource' 
+        &&  $p_sCastHint != 'mixed' &&  $p_sCastHint != 'unknown' 
+        &&  $p_sCastHint != 'binary' 
+        &&  $p_sCastHint != 'null' && $p_sCastHint != 'NULL'
+    )
+        #set ($sTypeHint = $TYPE_HINT)
+
+    #else if($p_sCastHint == 'int' || $p_sCastHint == 'integer'
+            || $p_sCastHint == 'bool' || $p_sCastHint == 'boolean'
+            || $p_sCastHint == 'float' || $p_sCastHint == 'double' || $p_sCastHint == 'real'
+            || $p_sCastHint == 'string'    
+            || $p_sCastHint == 'binary'    ## binary casting added in PHP 5.2.1
+    )
+        #set ( $sCastingHint = $p_sCastHint)
+    #end
+#end
+
+## EOF

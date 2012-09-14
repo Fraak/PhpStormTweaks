@@ -1,0 +1,42 @@
+#**
+    This is a Velocity Template for PHPStorm to generate Setter Methods.
+    
+    It takes the received typehint into account to either cast the parameter
+    (for scalar types) or use it as a type hint (for non-scalar types).
+    
+    @author Potherca
+*#
+
+## Load Macros
+#parse("macro.buildMethodName.vm")
+#parse("macro.buildParameterName.vm")
+#parse("macro.buildTypeHinting.vm")
+
+## Build variables
+#buildMethodName( $NAME )
+#buildParameterName( $FIELD_NAME )
+#buildTypeHinting( $TYPE_HINT )
+
+## Correct variables
+#if( $sParameterName.startsWith('_') )
+    #set( $sParameterName=  'p' + $sParameterName )
+#end
+
+#if( $sCastingHint != '' )
+    #set( $sCastingHint =  '(' + $sCastingHint + ')' )
+#end
+
+## Actual Method Template
+/**
+ * @param ${TYPE_HINT} $${sParameterName}
+ */
+${STATIC} public function set${sMethodName}(${sTypeHint} $${sParameterName})
+{
+#if (${STATIC} == "static")
+    self::$${FIELD_NAME} = ${sCastingHint} $${sParameterName};
+#else
+    $this->${FIELD_NAME} = ${sCastingHint} $${sParameterName};
+#end
+}
+
+## EOF

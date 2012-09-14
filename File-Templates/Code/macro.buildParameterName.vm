@@ -1,0 +1,18 @@
+#**
+    This PhpStorm Velocity Macro generates the parameter name for Getter and 
+    Setter Methods.
+    
+    It takes both 'simple' and my derived form of Systems Hungarian notation 
+    into account (for detail see: http://dl.dropbox.com/u/10170121/www/hungarian_apps.html)
+
+    @author Potherca
+*#
+#macro( buildParameterName $p_sName )
+    #if($p_sName.startsWith('m_'))
+        #set( $sParameterName = $p_sName.replaceFirst('/^m_/', 'p_') )
+    #else
+        #set( $sParameterName = $p_sName)
+    #end
+#end
+
+## EOF
