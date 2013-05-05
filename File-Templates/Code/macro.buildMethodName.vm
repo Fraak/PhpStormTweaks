@@ -3,7 +3,7 @@
     Getter and Setter Methods.
     
     It takes both 'simple' and my derived form of Systems Hungarian notation 
-    into account (for detail see: http://dl.dropbox.com/u/10170121/www/hungarian_apps.html)
+    into account (for detail see: http://potherca.github.io/VariableNamingConvention/)
 
     @author Potherca
 *#
